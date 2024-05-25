@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "axios": "^1.6.8",
+    "ioredis": "^5.4.1",
+    "prompt-sync": "^4.2.0",
+    "util": "^0.12.5",
+    "xml2js": "^0.6.2"
+  },
+  "name": "currencyconverter",
+  "description": "KG SOM Converter App",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nomad",
+  "license": "ISC"
+}
