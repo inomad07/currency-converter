@@ -9,6 +9,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
+    "start": "node src/app.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nomad",
