@@ -5,7 +5,7 @@ export function formatCurrencyDataFromXML({ CurrencyRates }) {
   const currencies = CurrencyRates.Currency.map(({ $: { ISOCode }, Nominal, Value }) => ({
       ISOCode,
       nominal: Nominal[0],
-      value: Value[0]
+      rate: Value[0]
   }));
 
   return {

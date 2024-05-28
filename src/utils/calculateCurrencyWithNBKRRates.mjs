@@ -2,7 +2,7 @@ import prompt from './prompt.mjs';
 import { convertAmountToTargetCurrency } from './convertCurrency.mjs';
 import { fetchAndParseXmlData } from './fetchCurrency.mjs';
 import { findCurrency, getAvailableCurrencyCodes } from './currency.mjs';
-import { CURRENCY_RATES_URL } from '../constants.mjs';
+import { CURRENCY_RATES_URL, TARGET_CURRENCY, CURRENCY_CODE_MESSAGE, CURRENCY_AMOUNT_MESSAGE } from '../constants.mjs';
 
 function findCurrencyByCode(currencies, currencyCode) {
   return currencies.find(({ ISOCode }) => ISOCode === currencyCode);
@@ -11,8 +11,8 @@ function findCurrencyByCode(currencies, currencyCode) {
 export async function calculateCurrencyWithNBKRRates() {
   console.log(`Choose your target currency ${getAvailableCurrencyCodes()}: `);
 
-  const currencyCode = prompt('Enter your currency code: ').toUpperCase();
-  const currencyAmount = prompt('Enter your currency amount: ');
+  const currencyCode = prompt(CURRENCY_CODE_MESSAGE).toUpperCase();
+  const currencyAmount = prompt(CURRENCY_AMOUNT_MESSAGE);
   const isValidCurrency = findCurrency(currencyCode);
 
   if (!isValidCurrency) {
@@ -22,12 +22,12 @@ export async function calculateCurrencyWithNBKRRates() {
 
   const { currencies } = await fetchAndParseXmlData(CURRENCY_RATES_URL);
 
-  const { nominal, value } = findCurrencyByCode(currencies, currencyCode);
+  const { nominal, rate } = findCurrencyByCode(currencies, currencyCode);
   const targetCurrencyAmount = convertAmountToTargetCurrency({
     sourceCurrencyAmount: currencyAmount,
     sourceCurrencyNominal: nominal,
-    exchangeRate: value
+    exchangeRate: rate
   });
 
-  console.log('Result: ', targetCurrencyAmount, 'Som')
+  console.log('Result: ', targetCurrencyAmount, TARGET_CURRENCY)
 }
