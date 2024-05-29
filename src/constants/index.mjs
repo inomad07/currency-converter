@@ -1,0 +1,12 @@
+export const CURRENCY_RATES_NBKR_URL = 'https://www.nbkr.kg/XML/daily.xml';
+export const CURRENCY_NAMES = ['USD', 'EUR', 'KZT', 'RUB'];
+export const DEFAULT_NOMINAL = 1;
+export const DEFAULT_CURRENCY = 'KGS';
+export const YES_OPTION = 'Y';
+export const GREETING_MESSAGE = 'Welcome to the KG Som converter App';
+export const NBRK_CURRENCY_RATES_MESSAGE = 'Use currency rates of NBKR? Y/N: ';
+export const CURRENCY_CODE_MESSAGE = 'Enter your currency code: ';
+export const CURRENCY_AMOUNT_MESSAGE = 'Enter your currency amount: ';
+export const DEFAULT_CURRENCY_AMOUNT_MESSAGE = 'Enter KGS currency amount: ';
+export const DEFAULT_CURRENCY_CODE_MESSAGE = 'Default currency KGS? Y/N: ';
+export const CURRENCY_EXCHANGE_RATE_MESSAGE = 'Enter your currency exchange rate: ';
