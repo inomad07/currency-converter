@@ -1,18 +1,21 @@
-function replaceCommasWithDots(stringAmount) {
-  return stringAmount.replace(',', '.');
-}
+import { replaceCommasWithDots } from "./currency.mjs";
+import { DEFAULT_CURRENCY } from "../constants/index.mjs";
 
-export function calculateTargetCurrencyAmount(sourceCurrencyNominal, exchangeRate, sourceCurrencyAmount) {
-  if (!sourceCurrencyNominal && !exchangeRate) return null;
-  if (!sourceCurrencyNominal && !sourceCurrencyAmount) return sourceCurrencyNominal * exchangeRate;
-
+function calculateTargetCurrencyToDefaultCurrency(exchangeRate, sourceCurrencyAmount) {
   return exchangeRate * sourceCurrencyAmount;
 }
 
-export function convertAmountToTargetCurrency({ sourceCurrencyNominal, exchangeRate, sourceCurrencyAmount }) {
-  return calculateTargetCurrencyAmount(
-    sourceCurrencyNominal,
+function calculateDefaultCurrencyToTargetCurrency(exchangeRate, sourceCurrencyAmount) {
+  return parseFloat((sourceCurrencyAmount / exchangeRate).toFixed(2))
+}
+
+export function convertTargetCurrency({ exchangeRate, sourceCurrencyAmount, currencyCode }) {
+  return currencyCode == DEFAULT_CURRENCY ? calculateTargetCurrencyToDefaultCurrency(
     parseFloat(replaceCommasWithDots(exchangeRate)),
     parseFloat(replaceCommasWithDots(sourceCurrencyAmount))
-  );
+  ): calculateDefaultCurrencyToTargetCurrency(
+    parseFloat(replaceCommasWithDots(exchangeRate)),
+    parseFloat(replaceCommasWithDots(sourceCurrencyAmount))
+  )
 }
+
