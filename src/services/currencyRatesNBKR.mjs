@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { parseString } from 'xml2js';
 import { promisify } from 'util';
-import { formatCurrencyDataFromXML } from './formatCurrencyXML.mjs';
+import { formatCurrencyDataFromXML } from '../utils/formatCurrencyXML.mjs';
 
 const parseXmlString = promisify(parseString);
 
