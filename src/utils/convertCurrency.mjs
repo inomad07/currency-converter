@@ -1,12 +1,12 @@
-import { prepareNumber } from "./currency.mjs";
+import { prepareNumber, formatNumberPrecision } from "./currency.mjs";
 import { DEFAULT_CURRENCY } from "../constants/index.mjs";
 
 function calculateTargetCurrencyToDefaultCurrency(exchangeRate, sourceCurrencyAmount) {
-  return exchangeRate * sourceCurrencyAmount;
+  return formatNumberPrecision(exchangeRate * sourceCurrencyAmount);
 }
 
 function calculateDefaultCurrencyToTargetCurrency(exchangeRate, sourceCurrencyAmount) {
-  return parseFloat((sourceCurrencyAmount / exchangeRate).toFixed(2))
+  return formatNumberPrecision(sourceCurrencyAmount / exchangeRate)
 }
 
 export function convertTargetCurrency({ exchangeRate, sourceCurrencyAmount, currencyCode }) {
@@ -21,4 +21,3 @@ export function convertTargetCurrency({ exchangeRate, sourceCurrencyAmount, curr
     preparedSourceCurrencyAmount
   )
 }
-
