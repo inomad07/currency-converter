@@ -17,5 +17,9 @@ export function replaceCommasWithDots(stringAmount) {
 }
 
 export function prepareNumber(stringifiedNumber) {
-  parseFloat(replaceCommasWithDots(stringifiedNumber))
+  return parseFloat(replaceCommasWithDots(stringifiedNumber))
+}
+
+export function formatNumberPrecision(number) {
+  return parseFloat(number.toFixed(2));
 }
